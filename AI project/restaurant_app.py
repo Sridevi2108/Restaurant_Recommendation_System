@@ -3,7 +3,6 @@ from pyswip import Prolog
 import os
 import base64
 
-
 # Add this function to load the background image
 def add_bg_from_local(image_file):
     with open(image_file, "rb") as img_file:
@@ -24,14 +23,14 @@ def add_bg_from_local(image_file):
         unsafe_allow_html=True
     )
 
-
 # Call the function before setting the title
-add_bg_from_local("images/background.png")
+add_bg_from_local(os.path.join("images", "background.png"))
+
+# Initialize Prolog and consult knowledge base using absolute path
 prolog = Prolog()
-prolog.consult("restaurant_kb.pl")  
+prolog.consult(os.path.join(os.path.dirname(__file__), "restaurant_kb.pl"))
 
 st.title("🍽️ Restaurant Recommendation System")
-
 
 cuisine = st.selectbox("Cuisine:", ["north_indian", "south_indian", "italian", "continental", "arabic", "japanese", "chinese", "korean", "fast_food", "mexican"])
 price = st.selectbox("Budget:", ["low", "medium", "high"])
@@ -41,7 +40,7 @@ type_of_food = st.selectbox("Type:", ["veg", "nonveg", "veg_nonveg"])
 min_rating = st.slider("Minimum Rating:", min_value=0.0, max_value=5.0, value=4.0, step=0.5)
 
 if st.button("Find Restaurants"):
-    query = f"restaurant(Restaurant, {cuisine}, {price}, {city}, {ambience}, {type_of_food}, Rating, Image), Rating >= {min_rating}."
+    query = f"restaurant(Restaurant, '{cuisine}', '{price}', '{city}', '{ambience}', '{type_of_food}', Rating, Image), Rating >= {min_rating}."
     try:
         results = list(prolog.query(query))
         if results:
@@ -50,7 +49,7 @@ if st.button("Find Restaurants"):
                 restaurant = result["Restaurant"]
                 rating = result["Rating"]
                 image_path = result["Image"]
-                full_image_path = os.path.abspath(os.path.join("images", image_path.split('/')[-1]))  # Construct full path
+                full_image_path = os.path.join(os.path.dirname(__file__), "images", os.path.basename(image_path))
                 st.image(full_image_path, width=300)
                 st.write(f"**{restaurant.replace('_', ' ').title()}** — Rating: ⭐ {rating}")
                 st.markdown("---")
@@ -69,5 +68,4 @@ if st.button("Explain System"):
     - **Ambience** (`casual`, `fine_dining`, `rooftop`, etc.)
     - **Type** (`veg`, `nonveg`, or both)
     - **Minimum Rating** (slider from 0 to 5 stars)
-
     """)
