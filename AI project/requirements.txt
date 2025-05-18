@@ -1,0 +1,4 @@
+pyswip
+streamlit
+numpy
+pandas
