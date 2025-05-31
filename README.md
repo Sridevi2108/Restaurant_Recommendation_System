@@ -4,7 +4,13 @@ This is an AI-powered Restaurant Recommendation System built using **Streamlit**
 
 ---
 
-Youtube link : https://www.youtube.com/watch?v=dzxjPa-NnqQ
+## 🎥 Project Demo
+
+<kbd>Click to watch:</kbd>  
+<a href="https://www.youtube.com/watch?v=dzxjPa-NnqQ" target="_blank">
+  <img src="https://img.youtube.com/vi/dzxjPa-NnqQ/0.jpg" alt="Watch the demo" width="600"/>
+</a>
+
 
 ## Features
 
