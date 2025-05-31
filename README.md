@@ -6,10 +6,15 @@ This is an AI-powered Restaurant Recommendation System built using **Streamlit**
 
 ## 🎥 Project Demo
 
-<kbd>Click to watch:</kbd>  
+<kbd>Click to watch the demo</kbd>
+
 <a href="https://www.youtube.com/watch?v=dzxjPa-NnqQ" target="_blank">
-  <img src="https://img.youtube.com/vi/dzxjPa-NnqQ/0.jpg" alt="Watch the demo" width="600"/>
+  <img src="https://img.youtube.com/vi/dzxjPa-NnqQ/0.jpg" 
+       alt="Watch demo on YouTube" 
+       width="360" 
+       style="border: 1px solid #ccc; border-radius: 8px;" />
 </a>
+
 
 
 ## Features
